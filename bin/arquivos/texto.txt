@@ -1,0 +1,4 @@
+Primeira linha
+qwerty
+Outra linha...
+0123456789
