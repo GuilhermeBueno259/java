@@ -10,22 +10,21 @@ import model.Conexao;
 public class TestaConexao {
 
 	public static void main(String[] args) {
-//		Aluno aluno = new Aluno("João da Silva", "123.456.789-10", "(42)99999-9999");
+		Aluno aluno = new Aluno("João da Silva", "123.456.789-10", "(42)99999-9999");
 
 		if (Conexao.conectar()) {
 
-			Scanner input = new Scanner(System.in);
-
 			AlunoDao dao = new AlunoDao(Conexao.getConexao());
 
-//			if (dao.inserir(aluno)) {
-//				System.out.printf("\nDados Salvos!");
-//			} else {
-//				System.out.printf("\nErro ao Salvar!");
-//			}
+			Scanner input = new Scanner(System.in);
+			if (dao.inserir(aluno)) {
+				System.out.printf("\nDados Salvos!");
+			} else {
+				System.out.printf("\nErro ao Salvar!");
+			}
 
-			System.out
-					.printf("\nO que você deseja?\n-0-> Buscar aluno específico\n-1-> Retornar lista inteira\n-2-> Apagar Registro\nOpção: ");
+			System.out.printf(
+					"\nO que você deseja?\n-0-> Buscar aluno específico\n-1-> Retornar lista inteira\n-2-> Apagar Registro\nOpção: ");
 			int opcao = input.nextInt();
 
 			switch (opcao) {

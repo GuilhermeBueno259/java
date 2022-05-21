@@ -38,8 +38,24 @@ public class AlunoDao implements Dao<Aluno> {
 	}
 
 	@Override
-	public boolean atualizar() {
-		return false;
+	public boolean atualizar(Aluno aluno) {
+		String sql = "update aluno set nome = ?, cpf = ?, fone = ? where id = ?";
+		try {
+			PreparedStatement cmd = conexao.prepareStatement(sql);
+			cmd.setString(1, aluno.getNome());
+			cmd.setString(2, aluno.getCpf());
+			cmd.setString(3, aluno.getFone());
+			cmd.setLong(4, aluno.getId());
+
+			int retorno = cmd.executeUpdate();
+
+			cmd.close();
+
+			return retorno > 0;
+		} catch (SQLException e) {
+			System.out.printf("Erro: %s", e.getMessage());
+			return false;
+		}
 	}
 
 	@Override
