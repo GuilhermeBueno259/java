@@ -8,6 +8,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
@@ -144,4 +149,44 @@ public class TelaController {
 			alerta.showAndWait();
 		}
 	}
+	
+    @FXML
+    void acaoImprimir(ActionEvent event) {
+    	label.setText("Imprimindo Tabela");
+    	tabelaAluno.setLayoutX(0);
+    	tabelaAluno.setLayoutY(0);
+    	
+//    	obtém impressora padrão do sistema
+    	Printer impressora = Printer.getDefaultPrinter();
+    	
+//    	cria uma página A4, retrato com margem padrão
+    	PageLayout pagina = impressora.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
+    	
+//    	cria uma fila de impressão baseada naimpressora padrão
+    	PrinterJob fila = PrinterJob.createPrinterJob();
+    	
+//    	se a fila foi criada, tenet enviar o documento
+    	if (fila != null) {
+    		System.out.printf("\nEnviando documento para a fila de impressão...");
+//    		mostra a caixa de diálogo da impressão
+    		if (fila.showPrintDialog(null)) {
+    			
+//				Envia o documento para o spoller de impressão
+    			boolean enviado = fila.printPage(pagina, tabelaAluno);
+    			
+//    			Se o documento foi enviado para a fila com sucesso então finaliza a fila e retorna verdadeiro se obteve sucesso
+    			if (enviado && fila.endJob()) {
+//					endJob() = true não significa que o documento saiu na impressoara,
+//    				mas que o serviço de envio para a fila foi finalizado
+    				label.setText("Documento enviado com sucesso");
+				} else {
+					label.setText("Não foi possível enviar o arquivo para a impressora");
+				}
+			} else {
+				label.setText("Não foi possível mostar a caixa de impressão");
+			}
+		} else {
+			label.setText("Não foi possível criar fila de impressão");
+		}
+    }
 }
