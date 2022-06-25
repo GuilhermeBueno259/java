@@ -60,4 +60,8 @@ public class Endereco {
 		this.estado = estado;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Rua: %s\nCidade: %s\nEstado: %s\n", rua, cidade, estado);
+	}
 }

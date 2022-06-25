@@ -58,7 +58,7 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
@@ -69,5 +69,11 @@ public class Cliente {
 
 	public void addPedido(Pedido pedido) {
 		pedidos.add(pedido);
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Id: %d\nNome: %s\nEndereço: %s - %s - %s", id, nome, endereco.getRua(),
+				endereco.getCidade(), endereco.getEstado());
 	}
 }

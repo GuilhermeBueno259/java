@@ -68,4 +68,9 @@ public class Pedido {
 	public void addItem(Item item) {
 		itens.add(item);
 	}
+
+	@Override
+	public String toString() {
+		return String.format("Id: %-5d\nData: %s\nCliente: %s", id, data.toString(), cliente.getNome());
+	}
 }
