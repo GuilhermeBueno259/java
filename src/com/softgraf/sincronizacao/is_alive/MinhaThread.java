@@ -42,8 +42,12 @@ public class MinhaThread extends Thread {
 			}
 		} while (t1.isAlive() || t2.isAlive() || t3.isAlive());
 
+		System.out.println("\n\nThread T1 está viva?" + t1.isAlive());
+		System.out.println("\nNome da Thread atual = " + Thread.currentThread().getName());
+		System.out.println("\nThread main está viva? " + currentThread().isAlive());
+
 		// Se executada lança uma Exceção do Tipo IllegalThreadStateException
-		//		t1.start();
+		// t1.start();
 
 	}
 
