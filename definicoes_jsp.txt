@@ -1,0 +1,69 @@
+Definições JSP - Java Server Pages
+
+	Toda página JSP, quando executada a primeira vez é convertida automaticamente pelo servidor (TomCat) em uma Servlet e é compilada.
+
+Objetos implícitos JSP:
+
+	Objeto			Instância da Classe		  Descrição
+	request			HttpServletRequest		  Dados de solicitação, incluindo parâmetros
+	response		HttpServletResponse		  Dados de resposta
+	out				PrintWriter				  fluxo de Saída
+	session			HttpSession				  Dados de Sessão
+	application		ServletContext			  Dados compartilhados por todas as páginas da aplicação
+	page			HttpJspPage				  Instância da servlet da página
+	config			ServletConfig			  Dados de configuração de Servlet
+	pageContext		PageContext				  Dados de contexto para execução da página
+	exception		Exception				  Erros não capturados ou excessão
+
+	Exemplo de uso:
+	<% Cookie[] cookies = request.getCookies(); %>
+
+Principais elementos JSP (tags JSP):
+	Todos são interpretados no servidor.
+	Podem ser usados em documentos HTML ou XML
+	
+	- Diretivas: <%@ %>
+	  Informações gerais sobre a página (ficam geralmente no topo da página)
+	  São processados de formaestática: durante a conversão para Servlet.
+	  <%@ page language="java" ... %>
+	  <%@ page import="pacote.Classe" %>
+	  <%@ include file="arquivo"%>
+	  <%@ taglib uril="caminho..." prefix="x" %>
+	  
+	- Declarações:
+	  <%! int contador = 0; %>
+	  
+	- Expressões:
+	  <%= contador++ %>
+	  
+	- Expression Language:
+	${5 >= 4}
+	${pageContext.request.contextPath}
+	
+	- Scriptlets:
+	  São fragmentos de código java dentro de <% %>
+	  
+	- Comentários JSP:
+	  <%-- isto é um comentário JSP --%>
+	  
+	- Ações: são comandos dentro da página.
+	  São processados dinamicamente quando a página é chamada.
+	  
+	  jsp:include				insere o conteúdo de uma nova página na página atual
+	  jsp:forward				envia o conteudo e controle da página atual para outra página
+	  jsp:params				relaciona os parâmetros a serem enviados
+	  jsp:param					define um parâmetro a ser manipulado por uma ação pai:
+	  							<jsp:params>, <jsp:forward>, <jsp:include>
+	  jsp:useBean				instancia um objeto javabean
+	  jsp:setProperty			define a propriedade da entrada do objeto javabean
+	  jsp:getProperty			define a propriedade de saída do objeto javabean
+	  jsp:element				define o elemento XML
+	  jsp:attribute				define atributos de elemento XML
+	  jsp:body					define o elemento body do HTML
+	  jsp:text					escreve um texto
+	  
+	- Custom tags: <prefixo:element... />
+	São tags personalizadas (taglibs)
+	JSTL - Java Server Pages Standard Tag Library
+	
+Para saber mais: tutorialspoint.com/jsp

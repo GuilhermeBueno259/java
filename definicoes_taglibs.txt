@@ -1,0 +1,42 @@
+Definições Taglibs
+
+	Para reduzir a dependência de código Java dentro do HTML
+	a Sun criou as taglibs, ou seja, código Java escrito em forma de tag HTML.
+	
+	Podemos utilizar tanto as taglibs padrões do Java, quanto criar nossas próprias tags.
+	
+	
+	JSTL = Java Server Pages Standard Tag Library
+	É uma biblioteca padrão de tags do JSP, consistindo de vários grupos de tags:
+	
+	core: tags de proposito geral = c:
+	xml: tags para tratamento e transformação de dados XML = xml:
+	fmt: tags para formatação de datas = fmt:
+	sql: tags para acesso a banco de dados relacional.
+	functions: tags para manipulação de strings e coleções
+	
+	Tags do grupo core:
+	<c:catch>		captura exceções
+	<c:out>			imprime conteudo dentro da página
+	<c:set >		define variável
+	<c:remove>		remove variável
+	<c:if>			idem if
+	<c:choosen>		idem switch
+	<c:when>		subtag de <c:choose> qu inclui corpo se sua condição for "true"
+ 	<c:forEach>		percorre uma coleção
+	<c:forTokens>	percorre uma string contendo delimitadores
+	<c:url>			reescreve URLs e codifica seus parâmetros
+	<c:import>		acessa contéudo fora da aplicação web
+	<c:redirect>	redireciona a resposta do navegador para uma url
+	
+IMPORTANTE: 
+Para usar JSTL você precisa baixar as API's de especificação e implementação:
+jstl-api-1.2.jar
+jstl-impl-1.2.jar
+Pode baixar em: softgraf.com/cursojava/jstl
+Depois salvar na pasta: WEB-INF/lib e adicionar ao Build Path do projeto
+
+Para importar as taglibs dentro da página JSP use:
+Exemplo jstl core:
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
