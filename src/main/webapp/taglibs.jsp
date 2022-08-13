@@ -57,5 +57,25 @@
 		
 	</table>
 
+	<%-- Variável JSTL --%>
+	<h4>Antes de remover: total = <c:out value="${total}"/></h4>
+	<c:remove var="total"/>
+	<h4>Depois de remover: total = <c:out value="${total}"/></h4>
+
+	<c:url var="destino" value="index.jsp">
+		<c:param name="origem" value="taglibs.jsp"></c:param>
+	</c:url>
+	
+	<a href="${destino}">Página Principal</a>
+
+	<%-- Inclusão de conteúdo usando:
+		-<jsp:include ...>
+		 somente páginas das aplicações
+		 
+		-<c:import ...>
+		 páginas da aplicação e externas
+	 --%>
+	<c:import url="rodape.jsp" charEncoding="ISO-8859-1"></c:import>
+
 </body>
 </html>

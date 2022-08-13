@@ -58,9 +58,23 @@
 	<%} %>
 	
 	</ul>
-	
+
+	<h4>Parâmetro origem = ${param.origem}</h4>
+
+	<br>
 	<a href="entrar.jsp">Editar Parametros</a>
+	<br>
+	<a href="taglibs.jsp">Exemplo Taglibs</a>
+	<br>
+	<a href="index.jsp?logout">Logout</a>
 	
+	<%
+		if (request.getParameter("logout") != null) {
+			session.invalidate();
+			response.sendRedirect("index.jsp");
+		}
+	%>
+
 	<%@ include file="rodape.jsp"%>
 </body>
 </html>
