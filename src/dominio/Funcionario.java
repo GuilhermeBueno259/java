@@ -73,7 +73,7 @@ public class Funcionario {
 
 	@Override
 	public String toString() {
-		return String.format("ID: %-5d Nome: %-20s Idade: %-5d", id, nome, idade);
+		return String.format("ID: %-5d Nome: %-20s Idade: %-5d Salario: R$ %-5.2f", id, nome, idade, salario);
 	}
 
 	public void info() {
