@@ -22,7 +22,7 @@
 			<property name="hibernate.format_sql" value="true" />
 			<!-- atualiza o banco ou gera as tabelas se for preciso -->
 			<!-- podemos usar: create, update ou create-drop -->
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>
 	</persistence-unit>
 </persistence>

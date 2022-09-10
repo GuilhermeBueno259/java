@@ -7,7 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Automovel {
-
 	private Long id;
 	private String marca;
 	private String modelo;
@@ -40,7 +39,7 @@ public class Automovel {
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
-	
+
 	@Column(name = "ano_fabricacao")
 	public Integer getAnoFabricacao() {
 		return anoFabricacao;
@@ -67,5 +66,4 @@ public class Automovel {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
-
 }
