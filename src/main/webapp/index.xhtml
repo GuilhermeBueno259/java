@@ -14,10 +14,32 @@
 				style="width: 500px"></p:chart>
 		</p:tab>
 		<p:tab title="Gráfico de Linhas">
-
+			<p:chart type="line" model="#{graficoLinhasMB.lineModel}"
+				style="width: 500px"></p:chart>
 		</p:tab>
-		<p:tab title="Drag an Drop">
+		<p:tab title="Drag and Drop">
+			<p:panel id="qpnl" header="Qualquer sentido">
+				<h:outputText value="Vertical ou Horizontal"/>
+			</p:panel>
+			<p:draggable for="qpnl"/>
 
+			<p:panel id="hpnl" header="Horizontal">
+				<h:outputText value="Só na Horizontal"/>
+			</p:panel>
+			<p:draggable for="hpnl" axis="x"/>
+
+			<p:panel id="vpnl" header="Verical">
+				<h:outputText value="Só na Vertical"/>
+			</p:panel>
+			<p:draggable for="vpnl" axis="y"/>
+
+			<p:panel id="rpnl" header="Reverte">
+				<h:outputText value="Reverte para a posição original"/>
+			</p:panel>
+			<p:draggable for="rpnl" revert="true"/>
+			
+			<p:graphicImage id="pic" url="http://softgraf.com/img/img1.jpg" alt="Imagem do Site"></p:graphicImage>
+			<p:draggable for="pic"/>
 		</p:tab>
 	</p:tabView>
 </h:body>
