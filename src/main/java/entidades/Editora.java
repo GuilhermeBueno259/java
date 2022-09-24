@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -36,7 +38,7 @@ public class Editora implements Serializable {
 		this.id = id;
 	}
 
-	@Column(length = 100)
+	@Column(length = 100, name = "nome_editora", unique = true)
 	public String getNomeEditora() {
 		return nomeEditora;
 	}
@@ -45,7 +47,7 @@ public class Editora implements Serializable {
 		this.nomeEditora = nomeEditora;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "editora", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public List<Livro> getLivros() {
 		return livros;
 	}
@@ -82,6 +84,6 @@ public class Editora implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("ID: %l\tNome: %s", id.longValue(), nomeEditora);
+		return String.format("ID: %d\tNome: %s", id, nomeEditora);
 	}
 }

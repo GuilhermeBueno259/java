@@ -32,7 +32,7 @@ public class Livro implements Serializable {
 		this.id = id;
 	}
 
-	@Column(length = 100)
+	@Column(length = 100, name = "nome_livro")
 	public String getNomeLivro() {
 		return nomeLivro;
 	}

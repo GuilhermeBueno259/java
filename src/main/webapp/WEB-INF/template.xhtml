@@ -10,15 +10,51 @@
 	<title>Livraria TI</title>
 </h:head>
 <h:body>
+
+	<style type="text/css">
+#cabecalho {
+	padding: 5px 5px 5px 20px;
+	height: 140px;
+	background-color: #545454;
+	color: #fff;
+	cursor: default;
+}
+
+body {
+	background: #fff;
+	width: 99%;
+}
+
+h1 {
+	font-family: Verdana;
+	font-size: 38px;
+	line-height: 80%;
+}
+
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 0;
+}
+</style>
+
+	<p:messages showSummary="true" showDetail="true" showIcon="true"
+		autoUpdate="true" closable="true" />
+
+	<div id="cabecalho">
+		<h1>Livraria SuperTI</h1>
+		<h2>Sistema de Cadastro</h2>
+		<h4>by Guilherme Bueno</h4>
+	</div>
+
 	<p:menubar>
 		<p:submenu label="Editora">
 			<p:menuitem value="Cadastrar" url="cadastrarEditora.xhtml" />
-			<p:menuitem value="Consultar" url="" />
+			<p:menuitem value="Consultar" url="consultarEditoras.xhtml" />
 		</p:submenu>
 
 		<p:submenu label="Livro">
-			<p:menuitem value="Cadastrar" url="" />
-			<p:menuitem value="Consultar" url="" />
+			<p:menuitem value="Cadastrar" url="cadastrarLivro.xhtml" />
+			<p:menuitem value="Consultar" url="consultarLivros.xhtml" />
 		</p:submenu>
 	</p:menubar>
 
