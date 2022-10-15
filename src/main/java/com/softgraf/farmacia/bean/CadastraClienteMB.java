@@ -12,6 +12,7 @@ import com.softgraf.farmacia.controller.Modo;
 import com.softgraf.farmacia.dominio.Estados;
 import com.softgraf.farmacia.entity.Cliente;
 import com.softgraf.farmacia.repositorio.RepositorioClientes;
+import com.softgraf.farmacia.util.JpaUtil;
 
 @ManagedBean(name = "cadCliMB")
 @ViewScoped
@@ -26,9 +27,7 @@ public class CadastraClienteMB implements Serializable {
 
 	public CadastraClienteMB() {
 		this.cliente = new Cliente();
-		this.repositorioClientes = new RepositorioClientes();
-
-		inicializar();
+		this.repositorioClientes = new RepositorioClientes(JpaUtil.getEntityManager());
 	}
 
 	// inicializa os valores padrões
@@ -82,5 +81,60 @@ public class CadastraClienteMB implements Serializable {
 
 		FacesContext contexto = FacesContext.getCurrentInstance();
 		contexto.addMessage(null, mensagem);
+	}
+
+	public void atualizar() {
+		FacesContext contexto = FacesContext.getCurrentInstance();
+		FacesMessage mensagem;
+
+		try {
+			repositorioClientes.atualizar(cliente);
+			mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Edição:", "Cliente atualizado com sucesso!");
+		} catch (Exception e) {
+			mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Edição:",
+					"Erro ao atualizar cliente: " + e.getMessage());
+		}
+
+		contexto.addMessage(null, mensagem);
+	}
+
+	public String guardar() {
+		if (modo == Modo.EDICAO) {
+			atualizar();
+		} else {
+			salvar();
+		}
+		// armazena mensagens
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		return "/cadastraCliente?faces-redirect=true";
+	}
+
+	public void editar() {
+		// modo edição
+		if (paramId != null) {
+			FacesContext contexto = FacesContext.getCurrentInstance();
+			FacesMessage mensagem;
+
+			try {
+				Cliente c = repositorioClientes.buscarPorId(paramId);
+				if (c == null) {
+					mensagem = new FacesMessage(FacesMessage.SEVERITY_WARN, "Edição:",
+							"Cliente com id = " + paramId + " não encontrado");
+				} else {
+					this.cliente = c;
+					this.modo = Modo.EDICAO;
+					mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Modo Edição: ", "Atualização de Cadastro");
+				}
+			} catch (Exception e) {
+				mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Edição: ",
+						"Erro ao editar cliente: " + e.getMessage());
+			}
+
+			contexto.addMessage(null, mensagem);
+
+			// novo cadastro, inicializa os campos
+		} else {
+			inicializar();
+		}
 	}
 }

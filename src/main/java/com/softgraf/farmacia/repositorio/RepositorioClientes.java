@@ -22,7 +22,7 @@ import com.softgraf.farmacia.entity.Cliente;
  * Deve fonecer métodos para adicionar, remover, atualizar, buscar, listar, etc.
  */
 
-@RequestScoped
+//@RequestScoped
 public class RepositorioClientes implements Serializable {
 	private static final long serialVersionUID = -5841325902476402508L;
 	private EntityManager em;
@@ -62,7 +62,7 @@ public class RepositorioClientes implements Serializable {
 
 	public List<Cliente> todos() {
 		// select c from Cliente c = from CLiente
-		return em.createQuery("from CLiente", Cliente.class).getResultList();
+		return em.createQuery("from Cliente", Cliente.class).getResultList();
 	}
 
 	// lista todas as cidades que tem o nome parecido (like) com o parametro passado

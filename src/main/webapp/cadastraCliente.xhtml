@@ -7,6 +7,11 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+	<f:metadata>
+		<f:viewParam name="id" value="#{cadCliMB.paramId}" />
+		<f:viewAction action="#{cadCliMB.editar}" />
+	</f:metadata>
+
 	<ui:define name="corpo">
 		<h2>Cadastro de Cliente</h2>
 		<h:form id="frm">
@@ -60,7 +65,27 @@
 					<f:validateLength minimum="3" maximum="30" />
 				</p:autoComplete>
 
-				<p:commandButton value="Cadastrar" icon="ui-icon-disk" />
+				<p:outputLabel value="Rua: " />
+				<p:inputText value="#{cadCliMB.cliente.rua}"
+					validatorMessage="Rua pode conter até 30 caracteres">
+					<f:validateLength maximum="30" />
+					<f:ajax event="blur" update="@this" />
+				</p:inputText>
+
+				<p:outputLabel value="Bairro: " />
+				<p:inputText value="#{cadCliMB.cliente.bairro}"
+					validatorMessage="Bairro pode conter até 30 caracteres">
+					<f:validateLength maximum="30" />
+					<f:ajax event="blur" update="@this" />
+				</p:inputText>
+
+				<p:outputLabel value="CEP: 12345679" />
+				<p:inputText value="#{cadCliMB.cliente.cep}">
+					<f:ajax event="blur" update="@this" />
+				</p:inputText>
+
+				<p:commandButton value="Cadastrar" action="#{cadCliMB.guardar}"
+					icon="ui-icon-disk" />
 			</p:panelGrid>
 		</h:form>
 	</ui:define>
