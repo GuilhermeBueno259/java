@@ -4,27 +4,32 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.softgraf.farmacia.entity.Cliente;
 import com.softgraf.farmacia.repositorio.RepositorioClientes;
-import com.softgraf.farmacia.util.JpaUtil;
 
-@ManagedBean
-@ViewScoped
+// Managed Bean JSF
+// @ManagedBean  // javax.faces.bean
+// @ViewScoped   // javax.faces.bean
+
+// Um bean CDI não pode ser injetado em um bean JSF
+
+// Managed Bean CDI
+@Named
+@ViewScoped // javax.faces.view
 public class ConsultaClienteMB implements Serializable {
+
 	private static final long serialVersionUID = -7838925002174827018L;
 
 	private List<Cliente> clientes;
 	private Cliente clienteSelecionado;
 
+	@Inject
 	private RepositorioClientes repositorioClientes;
-
-	public ConsultaClienteMB() {
-		this.repositorioClientes = new RepositorioClientes(JpaUtil.getEntityManager());
-	}
 
 	// lista todos os clientes do banco
 	public void consultar() {
@@ -32,7 +37,7 @@ public class ConsultaClienteMB implements Serializable {
 	}
 
 	public List<Cliente> getClientes() {
-		return clientes;
+		return this.clientes;
 	}
 
 	public Cliente getClienteSelecionado() {
@@ -52,11 +57,13 @@ public class ConsultaClienteMB implements Serializable {
 			// recarrega a lista do banco
 			consultar();
 			mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO, "Exclusão:", "Cliente removido com sucesso!");
+
 		} catch (Exception e) {
 			mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Exclusão:",
-					"Não foi possível remover o cliente. Erro: " + e.getMessage());
+					"Erro ao excluir cliente: " + e.getMessage());
 		}
 
 		contexto.addMessage(null, mensagem);
 	}
+
 }

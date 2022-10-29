@@ -8,86 +8,100 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 	<f:metadata>
-		<f:viewParam name="id" value="#{cadCliMB.paramId}" />
-		<f:viewAction action="#{cadCliMB.editar}" />
+		<f:viewParam name="id" value="#{cadcliMB.paramId}" />
+		<f:viewAction action="#{cadcliMB.editar}" />
 	</f:metadata>
 
+
 	<ui:define name="corpo">
+
+
 		<h2>Cadastro de Cliente</h2>
 		<h:form id="frm">
+
 			<p:messages showDetail="true" showSummary="true" autoUpdate="true"
 				closable="true" />
-			<p:panelGrid columns="2" cellspacing="5">
-				<p:outputLabel value="ID: " />
-				<p:inputText value="#{cadCliMB.cliente.id}" size="5" disabled="true" />
 
-				<p:outputLabel value="Tipo de Cliente: " />
-				<p:selectOneRadio value="#{cadCliMB.cliente.pessoa}">
+			<p:panelGrid columns="2" cellspacing="5">
+
+				<p:outputLabel value="ID:" />
+				<p:inputText value="#{cadcliMB.cliente.id}" size="5" disabled="true" />
+
+				<p:outputLabel value="Tipo de cliente:" />
+				<p:selectOneRadio value="#{cadcliMB.cliente.pessoa}">
 					<f:selectItem itemValue="F" itemLabel="Pessoa Física" />
 					<f:selectItem itemValue="J" itemLabel="Pessoa Jurídica" />
 				</p:selectOneRadio>
 
-				<p:outputLabel value="Nome do Cliente: " />
-				<p:inputText value="#{cadCliMB.cliente.nome}" size="30"
+				<p:outputLabel value="Nome:" />
+				<p:inputText value="#{cadcliMB.cliente.nome}" size="30"
 					required="true" requiredMessage="Faltou o nome do cliente">
 					<f:validateLength minimum="3" maximum="60" />
 					<p:ajax event="blur" update="@this" />
 				</p:inputText>
 
-				<p:outputLabel value="CPF/CNPJ: " />
-				<p:inputText value="#{cadCliMB.cliente.cpf_cnpj}" size="30">
+				<p:outputLabel value="CPF/CNPJ:" />
+				<p:inputText value="#{cadcliMB.cliente.cpf_cnpj}" size="30"
+					converter="cpfCnpjConverter">
 					<p:ajax event="blur" update="@this" />
 				</p:inputText>
 
-				<p:outputLabel value="Telefone: " />
-				<p:inputText value="#{cadCliMB.cliente.fone}">
+				<p:outputLabel value="Telefone:" />
+				<p:inputText value="#{cadcliMB.cliente.fone}"
+					converter="telefoneConverter">
 					<p:ajax event="blur" update="@this" />
 				</p:inputText>
 
-				<p:outputLabel value="E-mail: " />
-				<p:inputText value="#{cadCliMB.cliente.email}">
+				<p:outputLabel value="E-mail:" />
+				<p:inputText value="#{cadcliMB.cliente.email}"
+					converter="emailConverter">
 					<p:ajax event="blur" update="@this" />
 				</p:inputText>
 
-				<p:outputLabel value="Estado: " />
-				<p:selectOneMenu value="#{cadCliMB.cliente.estado}" required="true"
+				<p:outputLabel value="Estado:" />
+				<p:selectOneMenu value="#{cadcliMB.cliente.estado}" required="true"
 					requiredMessage="Faltou selecionar o estado">
-					<f:selectItem itemLabel="Selecione o Estado" />
-					<f:selectItems value="#{cadCliMB.estados}" var="v" itemLabel="#{v}" />
+					<f:selectItem itemLabel="Selecione o estado" />
+					<f:selectItems value="#{cadcliMB.estados}" var="v" itemLabel="#{v}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel value="Cidade: " />
-				<p:autoComplete value="#{cadCliMB.cliente.cidade}" required="true"
+				<p:outputLabel value="Cidade:" />
+				<p:autoComplete value="#{cadcliMB.cliente.cidade}" required="true"
 					requiredMessage="Faltou o nome da cidade"
-					completeMethod="#{cadCliMB.pesquisarCidades}"
+					completeMethod="#{cadcliMB.pesquisarCidades}"
 					validatorMessage="Cidade deve conter entre 3 e 30 caracteres">
-
 					<f:validateLength minimum="3" maximum="30" />
 				</p:autoComplete>
 
-				<p:outputLabel value="Rua: " />
-				<p:inputText value="#{cadCliMB.cliente.rua}"
+				<p:outputLabel value="Rua:" />
+				<p:inputText value="#{cadcliMB.cliente.rua}"
 					validatorMessage="Rua pode conter até 30 caracteres">
 					<f:validateLength maximum="30" />
 					<f:ajax event="blur" update="@this" />
 				</p:inputText>
 
-				<p:outputLabel value="Bairro: " />
-				<p:inputText value="#{cadCliMB.cliente.bairro}"
+				<p:outputLabel value="Bairro:" />
+				<p:inputText value="#{cadcliMB.cliente.bairro}"
 					validatorMessage="Bairro pode conter até 30 caracteres">
 					<f:validateLength maximum="30" />
 					<f:ajax event="blur" update="@this" />
 				</p:inputText>
 
-				<p:outputLabel value="CEP: 12345679" />
-				<p:inputText value="#{cadCliMB.cliente.cep}">
+				<p:outputLabel value="CEP: 12345678" />
+				<p:inputText value="#{cadcliMB.cliente.cep}"
+					converter="cepConverter">
 					<f:ajax event="blur" update="@this" />
 				</p:inputText>
 
-				<p:commandButton value="Cadastrar" action="#{cadCliMB.guardar}"
+				<p:commandButton value="Cadastrar" action="#{cadcliMB.guardar}"
 					icon="ui-icon-disk" />
+
 			</p:panelGrid>
+
 		</h:form>
+
 	</ui:define>
+
+
 
 </ui:composition>

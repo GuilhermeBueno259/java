@@ -10,8 +10,18 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/*
+ * Qualquer classe pública que possua:
+ *  - um construtor padrão ou 
+ *  - um construtor com argumentos injetados
+ * passa a ser um bean CDI (CDI Managed Bean)
+ * Então não se faz necessário a anotação
+ * @Named do CDI em todos os casos
+ */
+
 @Entity
 public class Cliente implements Serializable {
+
 	private static final long serialVersionUID = -2448713835019776339L;
 
 	private Integer id;
@@ -65,7 +75,7 @@ public class Cliente implements Serializable {
 		this.cpf_cnpj = cpf_cnpj;
 	}
 
-	@Size(max = 60) // Hibernate Validator
+	@Size(max = 60) // Hibernate validator
 	@Column(length = 60)
 	public String getEmail() {
 		return email;
@@ -102,7 +112,7 @@ public class Cliente implements Serializable {
 		this.bairro = bairro;
 	}
 
-	@NotEmpty
+	@NotEmpty // hibernate validator
 	@Size(min = 3, max = 30)
 	@Column(length = 30, nullable = false)
 	public String getCidade() {
@@ -113,7 +123,7 @@ public class Cliente implements Serializable {
 		this.cidade = cidade;
 	}
 
-	@NotEmpty
+	@NotEmpty // Hibernate validator
 	@Column(length = 20, nullable = false)
 	public String getEstado() {
 		return estado;
