@@ -115,6 +115,9 @@
 				<p:printer target="relatorio" />
 			</p:commandButton>
 
+			<p:commandButton value="JasperReport PDF" ajax="false"
+				action="#{relatorioClienteBean.gerarPDF}" />
+
 		</h:form>
 
 	</ui:define>

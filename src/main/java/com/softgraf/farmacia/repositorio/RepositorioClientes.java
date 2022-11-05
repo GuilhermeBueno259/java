@@ -14,10 +14,10 @@ import javax.inject.Inject;
  */
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import com.softgraf.farmacia.entity.Cliente;
-import com.softgraf.farmacia.util.Transacional;
 
 /*
  * Um repositório representa uma coleção de objetos de um tipo específico.
@@ -44,13 +44,13 @@ public class RepositorioClientes implements Serializable {
 		this.em = em;
 	}
 
-	@Transacional
+//	@Transacional
 	public void adicionar(Cliente cliente) {
 		// transação do EntityManager foi substítuida pela anotação Transacional
-//		EntityTransaction tx = em.getTransaction();
-//		tx.begin();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		em.persist(cliente);
-//		tx.commit();
+		tx.commit();
 	}
 
 	public void removerPorId(Integer id) {
