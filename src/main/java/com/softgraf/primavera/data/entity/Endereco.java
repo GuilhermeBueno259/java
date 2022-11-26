@@ -11,6 +11,9 @@ public class Endereco {
 	@Column(length = 30)
 	private String rua;
 
+	@Column(length = 20)
+	private String bairro;
+
 	@NotBlank(message = "Cidade é obrigatório")
 	@Size(min = 3, max = 30)
 	@Column(length = 30, nullable = false)
@@ -53,6 +56,14 @@ public class Endereco {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
 }
