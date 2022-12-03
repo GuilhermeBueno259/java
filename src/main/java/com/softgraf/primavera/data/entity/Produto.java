@@ -48,6 +48,9 @@ public class Produto implements Serializable {
 	@Column(nullable = false)
 	private Integer quantidade;
 
+	@Column(length = 60)
+	private String urlImagem;
+
 	// Contrutor padrão
 	public Produto() {
 	}
@@ -99,6 +102,14 @@ public class Produto implements Serializable {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public String getUrlImagem() {
+		return urlImagem;
+	}
+
+	public void setUrlImagem(String urlImagem) {
+		this.urlImagem = urlImagem;
 	}
 
 }

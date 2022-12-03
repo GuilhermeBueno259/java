@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<div th:replace="~{base::head}"></div>
+<div th:replace="~{base::navbar}"></div>
+
+<body class="container">
+
+	<div
+		th:replace="~{base::banner('Sistema Primavera', 'Bem vindo à home page')}"></div>
+
+	<div class="row">
+
+		<div th:each="produto: ${produtos}" class="col">
+			<div class="card mb-4" style="width: 18rem;">
+				<div class="cardd-body">
+					<h5 th:text="${#strings.capitalizeWords(produto.descricao)}"
+						class="card-title"></h5>
+					<h6 th:text="${#numbers.formatCurrency(produto.preco)}"
+						class="card-subtitle mb-2 text-muted"></h6>
+					<p th:text="${'Restam ' + produto.quantidade + ' unidades'}"
+						class="card-text">
+					<p th:text="${'Cod: ' + produto.id}" class="card-text">
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
