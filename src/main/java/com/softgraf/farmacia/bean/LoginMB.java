@@ -16,7 +16,7 @@ import com.softgraf.farmacia.controller.Usuario;
 public class LoginMB implements Serializable {
 	private static final long serialVersionUID = -4180601613682004457L;
 
-	// objeto usuário instânciado pelo cintainer CDI e disponível para todo o
+	// objeto usuário instânciado pelo container CDI e disponível para todo o
 	// sistema
 	@Inject
 	private Usuario usuario;

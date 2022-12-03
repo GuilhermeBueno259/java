@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-04-19T17:10:13 -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="clients_a4" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
 	<property name="com.jaspersoft.studio.data.sql.tables" value="Y2xpZW50ZSAsMTUsMTUsYjc5MGIwMGYtNGY2Yy00MGIxLTk1MTAtYTM3NDE1OThlY2NlOw=="/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="FarmaciaEE"/>
@@ -28,7 +27,7 @@
 			<band height="27">
 				<frame>
 					<reportElement mode="Opaque" x="0" y="3" width="802" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="f24569ed-2518-465a-a480-0c195aacd180"/>
-					<textField isStretchWithOverflow="true">
+					<textField textAdjust="StretchHeight">
 						<reportElement style="SubTitle" x="2" y="0" width="108" height="24" forecolor="#FFFFFF" uuid="5b7282d2-5169-4db4-b85a-e2391d4d4e66"/>
 						<textElement>
 							<font isBold="false"/>
@@ -66,10 +65,6 @@
 					</textElement>
 					<text><![CDATA[Relatório de Clientes]]></text>
 				</staticText>
-				<image>
-					<reportElement x="2" y="16" width="557" height="70" uuid="c66a39d9-d29b-4f32-9f85-9bec4c17f90a"/>
-					<imageExpression><![CDATA["http://softgraf.com/cursojava/farmaciaEE/header_farmaciaee.png"]]></imageExpression>
-				</image>
 			</frame>
 		</band>
 	</title>
@@ -105,21 +100,21 @@
 		<band height="18" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="34a2ae4b-4055-476b-8676-d499f6af510b"/>
-				<textField isStretchWithOverflow="true">
+				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="0" y="0" width="199" height="18" uuid="b6cb668b-c295-4459-9dfe-6e5d4ac950c1"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{cpf_cnpj}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="207" y="0" width="140" height="18" uuid="9c8ede77-085c-451e-a113-81530e9d81c7"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{fone}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" positionType="Float" x="370" y="0" width="427" height="18" uuid="14571e4c-e777-49dd-9b8d-4dfa25a64b21"/>
 					<textElement>
 						<font size="14"/>
