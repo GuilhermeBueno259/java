@@ -22,9 +22,9 @@ public class CrudService {
 	}
 
 	public void cadastraTresProdutos() {
-		Produto p1 = new Produto("Xarope para tosse", 35.90f, 10);
-		Produto p2 = new Produto("Shampoo Anticaspa", 49.99f, 15);
-		Produto p3 = new Produto("Anti-inflamatório", 5.66f, 20);
+		Produto p1 = new Produto("Televisão 1", 1999.90f, 10, "tv1.jpg");
+		Produto p2 = new Produto("Televisão 2", 2499.90f, 15, "tv2.jpg");
+		Produto p3 = new Produto("Televisão 3", 1299.90f, 20, "tv3.jpg");
 
 		produtoRepository.save(p1);
 		produtoRepository.save(p2);

@@ -13,6 +13,8 @@
 
 		<div th:each="produto: ${produtos}" class="col">
 			<div class="card mb-4" style="width: 18rem;">
+				<img class="card-img-top" th:src="${uploads + produto.urlImagem}"
+					alt="Foto do produto">
 				<div class="cardd-body">
 					<h5 th:text="${#strings.capitalizeWords(produto.descricao)}"
 						class="card-title"></h5>
@@ -22,6 +24,7 @@
 						class="card-text">
 					<p th:text="${'Cod: ' + produto.id}" class="card-text">
 				</div>
+				<a href="#" class="btn btn-primary">Adicionar ao carrinho</a>
 			</div>
 		</div>
 

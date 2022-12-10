@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<div th:replace="~{base::head}"></div>
+<div th:replace="~{base::navbar}"></div>
+
+<body class="container">
+
+	<div
+		th:replace="~{base::banner('Sistema Primavera', 'Gerenciamento de produtos')}"></div>
+	<div class="col">
+		<table class="table table-stripped table-responsive table-bordered">
+			<thead>
+				<tr>
+					<th class="col-1">Código</th>
+					<th class="col-7">Descrição</th>
+					<th class="col-1">Preço</th>
+					<th class="col-1">Quantidade</th>
+					<th class="col-1">Imagem</th>
+					<th class="col-1">Gerenciar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="produto : ${produtos}">
+					<td th:text="${produto.id}">1</td>
+					<td th:text="${#strings.capitalizeWords(produto.descricao)}">Tv1</td>
+					<td th:text="${#numbers.formatCurrency(produto.preco)}">1999</td>
+					<td th:text="${produto.quantidade}">5</td>
+					<td>
+						<img th:src="${uploads + produto.urlImagem}" width="100" alt="Produto sem Foto"
+						th:title="${produto.urlImagem}" class="img-thumbnail">
+					</td>
+					<td style="text-align: center; vertical-align: center;">
+						<a th:href="@{/produto/alterar/{id}(id=${produto.id})}">Alterar</a> 
+						<a th:href="@{/produto/excluir/{id}(id=${produto.id})}">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<a href="/produto/cadastrar" class="btn btn-primary mb-4">Cadastrar</a>
+		
+	</div>
+</body>
+</html>

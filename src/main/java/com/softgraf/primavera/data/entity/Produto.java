@@ -61,6 +61,13 @@ public class Produto implements Serializable {
 		this.quantidade = quantidade;
 	}
 
+	public Produto(String descricao, Float preco, Integer quantidade, String urlImagem) {
+		this.descricao = descricao;
+		this.preco = preco;
+		this.quantidade = quantidade;
+		this.urlImagem = urlImagem;
+	}
+
 	public Produto(Long id, String descricao, Float preco, Integer quantidade) {
 		this(descricao, preco, quantidade);
 		this.id = id;

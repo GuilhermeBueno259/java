@@ -15,16 +15,22 @@ public class HomeController {
 
 	@GetMapping("/home")
 	public String home(Model model) {
-//		Produto p1 = new Produto(1l, "celular Iphone 13 128GB", 5199.0f, 2);
-//		Produto p2 = new Produto(2l, "celular Galaxy a03 64GB", 801.1f, 3);
-//		Produto p3 = new Produto(3l, "celular Motorola moto e20 32GB", 699.0f, 2);
-//		List<Produto> produtos = Arrays.asList(p1, p2, p3);
-
 		// objeto responsável por enviar dados para o front-end
 		model.addAttribute("produtos", repository.findAll());
+		model.addAttribute("uploads", "/uploads/");
 
 		// carrega "templates/home.html"
 		return "home";
+	}
+
+	@GetMapping("/sobre")
+	public String sobre(Model model) {
+		return "sobre";
+	}
+
+	@GetMapping("/")
+	public String index(Model model) {
+		return "redirect:/home";
 	}
 
 }
